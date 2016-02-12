@@ -31,10 +31,10 @@ class MoviesController < ApplicationController
       redir = true
     end
     
-    if redir
-      flash.keep
-      redirect_to movies_path(:sort => @sort, :ratings => @ratings)
-    end
+    # if redir
+    #   flash.keep
+    #   redirect_to movies_path(:sort => @sort, :ratings => @ratings)
+    # end
 
     # if redir
     #   redirect_to controller: 'index'
