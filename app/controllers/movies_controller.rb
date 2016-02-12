@@ -11,9 +11,34 @@ class MoviesController < ApplicationController
   end
 
   def index
+    
+    redir = false
+    
     @all_ratings = Movie.all_ratings
-    @ratings = params[:ratings]
-    @sort = params[:sort]
+    if params[:ratings]
+      @ratings = params[:ratings]
+      session[:ratings] = params[:ratings]
+    else
+      @ratings = session[:ratings]
+      redir = true
+    end
+    
+    if params[:sort]
+      @sort = params[:sort]
+      session[:sort] = params[:sort]
+    else
+      @sort = session[:sort]
+      redir = true
+    end
+    
+    if redir
+      flash.keep
+      redirect_to movies_path(:sort => @sort, :ratings => @ratings)
+    end
+
+    # if redir
+    #   redirect_to controller: 'index'
+    
     if @sort == nil
       @sort = 'id'
     end
