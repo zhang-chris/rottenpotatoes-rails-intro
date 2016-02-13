@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
       @movies = Movie.where(rating: ratings_list).order(@sort)
     else
       @ratings = {}
-      @allratings.each do |rating|
+      @all_ratings.each do |rating|
         @ratings[rating] = true
       end
       @movies = Movie.order(@sort)
