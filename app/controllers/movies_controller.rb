@@ -43,8 +43,8 @@ class MoviesController < ApplicationController
       @sort = 'id'
     end
     if @ratings != nil
-      @ratings = @ratings.keys
-      @movies = Movie.where(rating: @ratings).order(@sort)
+      ratings_list = @ratings.keys
+      @movies = Movie.where(rating: ratings_list).order(@sort)
     else
       @movies = Movie.order(@sort)
     end
