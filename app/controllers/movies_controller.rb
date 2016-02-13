@@ -46,8 +46,13 @@ class MoviesController < ApplicationController
       ratings_list = @ratings.keys
       @movies = Movie.where(rating: ratings_list).order(@sort)
     else
+      @ratings = {}
+      @allratings.each do |rating|
+        @ratings[rating] = true
+      end
       @movies = Movie.order(@sort)
     end
+    
   end
 
   def new
